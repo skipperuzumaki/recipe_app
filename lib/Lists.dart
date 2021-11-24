@@ -56,7 +56,7 @@ void populateLists(){
         imageURL: 'https://images.squarespace-cdn.com/content/v1/59d40133017db2fd8a60b3fe/1633456611944-24C5MYWI8CD5LEWROWMP/Screen+Shot+2021-10-05+at+12.56.00+PM.png?format=2500w',
       )
   );
-  allDinners.add(
+  allLunches.add(
       Recipe(
         name: 'Protein Pizza',
         ingredients: [

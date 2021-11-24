@@ -29,7 +29,8 @@ class _IngredientChecklistState extends State<IngredientChecklist> {
                 Text(item.item + " " + item.quantity.toString() + " " + item.unit),
                 InkWell(
                   onTap: (){
-                    // TODO : Check Item
+                    DatabaseService.toggleIngredientStatus(item.item);
+                    setState(() {});
                   },
                   child: DatabaseService.getIngredientStatus(item.item)? Icon(Icons.check_box) : Icon(Icons.check_box_outline_blank),
                 ),
