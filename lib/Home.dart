@@ -18,6 +18,7 @@ class HomeApp extends StatelessWidget {
         var timestamp = DateTime.now().millisecondsSinceEpoch;
         bool pursue = lastCheck == null ? true: (timestamp - lastCheck) > 100000000;
         if (pursue){
+          DatabaseService.prefs!.setInt('lastCheck', timestamp);
           DatabaseService.generateWeeklyRecipes();
           var ings = DatabaseService.getConsolidatedWeeklyIngredients();
           ings.forEach((element) {
