@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:recepie_app/DailyPage.dart';
-import 'package:recepie_app/Database.dart';
-import 'package:recepie_app/IngredientChecklist.dart';
+import 'package:recipe_app/DailyPage.dart';
+import 'package:recipe_app/Database.dart';
+import 'package:recipe_app/IngredientChecklist.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

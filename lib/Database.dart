@@ -1,25 +1,10 @@
 import 'dart:convert';
-import 'dart:math';
 
-import 'package:recepie_app/Lists.dart';
-import 'package:recepie_app/models.dart';
+import 'package:recipe_app/Lists.dart';
+import 'package:recipe_app/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-List<T> getNRandomElement<T>(List<T> list, int n) {
-  List<int> visited = new List<int>.empty(growable: true);
-  List<T> ret = new List<T>.empty(growable: true);
-  final random = new Random();
-  for (int _ = 0; _ < n; _++){
-    while(true){
-      var i = random.nextInt(list.length);
-      if (!visited.contains(i)){
-        ret.add(list[i]);
-        break;
-      }
-    }
-  }
-  return ret;
-}
+List<T> getNRandomElement<T>(List<T> list, int n) => (list.toList()..shuffle()).take(n).toList();
 
 class DatabaseService{
   static SharedPreferences? prefs;
@@ -63,9 +48,9 @@ class DatabaseService{
     List<Recipe> dinners = getNRandomElement(allDinners, 7);
     var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     for (int i = 0; i < 7; i++){
-      prefs!.setString("Breakfast_" + days[i], json.encode(breakfasts[i]));
-      prefs!.setString("Lunch_" + days[i], json.encode(lunches[i]));
-      prefs!.setString("Dinner_" + days[i], json.encode(dinners[i]));
+      prefs!.setString("Breakfast_" + days[i], json.encode(breakfasts[0]));
+      prefs!.setString("Lunch_" + days[i], json.encode(lunches[0]));
+      prefs!.setString("Dinner_" + days[i], json.encode(dinners[0]));
     }
   }
 }

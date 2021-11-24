@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recepie_app/Database.dart';
-import 'package:recepie_app/models.dart';
+import 'package:recipe_app/Database.dart';
+import 'package:recipe_app/models.dart';
 
 class IngredientChecklist extends StatefulWidget {
   @override
