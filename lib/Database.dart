@@ -48,9 +48,9 @@ class DatabaseService{
     List<Recipe> dinners = getNRandomElement(allDinners, 7);
     var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     for (int i = 0; i < 7; i++){
-      prefs!.setString("Breakfast_" + days[i], json.encode(breakfasts[i]));
-      prefs!.setString("Lunch_" + days[i], json.encode(lunches[i]));
-      prefs!.setString("Dinner_" + days[i], json.encode(dinners[i]));
+      prefs!.setString("Breakfast_" + days[i], json.encode(breakfasts[0]));
+      prefs!.setString("Lunch_" + days[i], json.encode(lunches[0]));
+      prefs!.setString("Dinner_" + days[i], json.encode(dinners[0]));
     }
   }
 }
