@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:recipe_app/DailyPage.dart';
@@ -15,7 +16,7 @@ class HomeApp extends StatelessWidget {
       var lastCheck = DatabaseService.prefs!.getInt('lastCheck');
       if (lastCheck == null || day == 'Sunday'){
         var timestamp = DateTime.now().millisecondsSinceEpoch;
-        bool pursue = lastCheck == null ? true: timestamp - lastCheck > 100000000;
+        bool pursue = lastCheck == null ? true: (timestamp - lastCheck) > 100000000;
         if (pursue){
           DatabaseService.generateWeeklyRecipes();
           var ings = DatabaseService.getConsolidatedWeeklyIngredients();
@@ -34,8 +35,10 @@ class HomeApp extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: 100,),
+              Icon(Icons.local_fire_department_sharp, color: Colors.deepOrangeAccent, size: 300,),
               TextButton(onPressed: (){
                 Navigator.push(
                   context,
@@ -43,7 +46,8 @@ class HomeApp extends StatelessWidget {
                     builder: (context) => new IngredientChecklist(),
                   ),
                 );
-              }, child: Text("Ingredients Checklist"), style: TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.deepOrangeAccent),),
+              }, child: Text("Ingredients Checklist"), style: TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.deepOrangeAccent, minimumSize: Size(400, 50)),),
+              SizedBox(height: 20,),
               TextButton(onPressed: (){
                 Navigator.push(
                   context,
@@ -51,7 +55,7 @@ class HomeApp extends StatelessWidget {
                     builder: (context) => new DailyMeals(day: day,),
                   ),
                 );
-              }, child: Text("Todays Recipies"), style: TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.deepOrangeAccent),),
+              }, child: Text("Todays Recipies"), style: TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.deepOrangeAccent, minimumSize: Size(400, 50)),),
             ],
           ),
         ),
